@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:grigora/constants/colorConstants.dart';
 import 'package:grigora/model/restuarants.dart';
 import 'package:grigora/provider/restaurantState.dart';
-import 'package:grigora/reusables/aSingleRestaurant.dart';
+
 import 'package:grigora/reusables/restaurantNearYou.dart';
 import 'package:grigora/reusables/titleDialog.dart';
 import 'package:grigora/reusables/vertical.dart';
