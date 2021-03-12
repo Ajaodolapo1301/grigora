@@ -56,15 +56,18 @@ class FeaturedModel{
  class DetailsModel {
    int delivery_fee;
    int restaurant_id;
-
+    String opening_time;
    String restaurant_name;
    String restaurant_profile_image;
    String restaurant_image;
    String cuisines;
+   String closing_time;
+   int total_rating;
+   String address;
    List<FeaturedModel> featureModel;
 
    DetailsModel(
-       {this.restaurant_id, this.cuisines, this.delivery_fee, this.restaurant_image, this.restaurant_name, this.restaurant_profile_image, this.featureModel});
+       {this.restaurant_id, this.cuisines, this.delivery_fee, this.restaurant_image, this.restaurant_name, this.restaurant_profile_image, this.featureModel, this.opening_time, this.closing_time, this.total_rating, this.address});
 
 
    DetailsModel.fromJson(Map<String, dynamic> json) {
@@ -80,6 +83,11 @@ class FeaturedModel{
      restaurant_id = json["restaurant_id"];
      cuisines = json["cuisines"];
      restaurant_image = json["restaurant_image"];
+     closing_time = json["closing_time"];
+    address = json["address"];
+     opening_time = json['opening_time'];
+     total_rating = json["total_rating"];
+
    }
 
  }

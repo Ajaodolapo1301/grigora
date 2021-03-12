@@ -25,8 +25,6 @@ class RestaurantsImpl implements AbstractRestaurants{
       var response = await http.get(url).timeout(Duration(seconds: 30));
       int statusCode = response.statusCode;
 
-      print(statusCode);
-      print(response.body);
 
       if (statusCode != 200) {
         result["message"] = "An error occurred";
@@ -45,13 +43,11 @@ class RestaurantsImpl implements AbstractRestaurants{
 
     }
 
-
-
     catch (error) {
 
       result["message"] = error.toString();
     }
-    print("papapapa $result");
+
 
     return result;
   }
@@ -64,8 +60,6 @@ class RestaurantsImpl implements AbstractRestaurants{
       var response = await http.get(url).timeout(Duration(seconds: 30));
       int statusCode = response.statusCode;
 
-      print(statusCode);
-      print(response.body);
 
       if (statusCode != 200) {
         result["message"] = "An error occurred";
@@ -82,7 +76,7 @@ class RestaurantsImpl implements AbstractRestaurants{
 
       result["message"] = error.toString();
     }
-    print("papapapa $result");
+
 
     return result;
   }

@@ -90,7 +90,7 @@ DetailsModel detailsModel;
                           padding: const EdgeInsets.only(right: 20, left: 20),
                           child: Container(
                             width: 200,
-                            margin: EdgeInsets.only( top: 15.0),
+                            margin: EdgeInsets.only( top: 20.0),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
@@ -271,7 +271,9 @@ class AppBar extends StatelessWidget {
                             SizedBox(width: 6,),
                             Icon(Icons.warning_amber_rounded, size: 15, color: Colors.white,),
 
-                            Text("More info".toUpperCase(), style: TextStyle(color: Colors.white, fontSize: 14, ))
+                            InkWell(
+                                onTap: ()=> showBVNDialog(context),
+                                child: Text("More info".toUpperCase(), style: TextStyle(color: Colors.white, fontSize: 14, )))
                           ],
                         ),
                         SizedBox(height: 10,),
@@ -282,22 +284,22 @@ class AppBar extends StatelessWidget {
                           children: [
                             Column(
                               children: [
-                                Text("ywyw",style: TextStyle(color: kborderColor, fontSize: 14, ) ),
-                                Text("ddhd", style: TextStyle(color: Colors.white, fontSize: 14, ))
+                                Text("Min. order",style: TextStyle(color: kborderColor, fontSize: 14, ) ),
+                                Text("N200", style: TextStyle(color: Colors.white, fontSize: 14, ))
 
                               ],
                             ),
                             Column(
                               children: [
-                                Text("ywyw",style: TextStyle(color: kborderColor, fontSize: 14, ) ),
-                                Text("ddhd", style: TextStyle(color: Colors.white, fontSize: 14, ))
+                                Text("Prep time",style: TextStyle(color: kborderColor, fontSize: 14, ) ),
+                                Text("40 min", style: TextStyle(color: Colors.white, fontSize: 14, ))
 
                               ],
                             ),
                             Column(
                               children: [
-                                Text("ywyw",style: TextStyle(color: kborderColor, fontSize: 14, ) ),
-                                Text("ddhd", style: TextStyle(color: Colors.white, fontSize: 14, ))
+                                Text("Delivery fee",style: TextStyle(color: kborderColor, fontSize: 14, ) ),
+                                Text("N250", style: TextStyle(color: Colors.white, fontSize: 14, ))
 
                               ],
                             )
@@ -311,7 +313,7 @@ class AppBar extends StatelessWidget {
                           children: [
 
                             Expanded(
-                              flex: 2,
+                              flex: 3,
                               child : Container(
                                 height: 30,
 //                                          width: 100,
@@ -322,59 +324,25 @@ class AppBar extends StatelessWidget {
                                     color: Colors.white
 
                                 ),
-                                child: Row(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 5, right: 5),
+                                  child: Row(
 
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Expanded(
-                                        flex:2,
-                                        child: Center(child: Text("jsdn"))),
-
-
-                                    Container(
-                                      width: 1,
-                                      height: double.maxFinite,
-                                      color: Colors.grey,
-                                    ),
-                                    Container(
-
-                                        width: 50,
-                                        child: DropdownButtonHideUnderline(
-                                          child: DropdownButton(
-
-                                            elevation: 0,
-//                                                    hint: Text(
-//                                                      _dropDownValue,
-//                                                      style: TextStyle(color: kprimaryGreen),
-//                                                    ),
-                                            isExpanded: true,
-                                            iconSize: 25.0,
-
-                                            icon: Icon(Icons.arrow_drop_down),
-
-                                            style: TextStyle(color: kprimaryGreen),
-                                            items: ['Monthly', 'Weekly', 'Daily'].map(
-                                                  (val) {
-                                                return DropdownMenuItem<String>(
-                                                  value: val,
-                                                  child: Text(val),
-                                                );
-                                              },
-                                            ).toList(),
-                                            onChanged: (val) {
-//                                            setState(
-//                                                  () {
-//                                                _dropDownValue = val;
-//                                              },
-//                                            );
-                                            },
-                                          ),
-                                        )
-
-                                    ),
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Center(child: Text("Pickup time")),
 
 
-                                  ],
+                                      Container(
+                                        width: 1,
+                                        height: double.maxFinite,
+                                        color: Colors.grey,
+                                      ),
+
+                              Icon(Icons.keyboard_arrow_down_rounded)
+
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
@@ -394,7 +362,7 @@ class AppBar extends StatelessWidget {
                                 child: Padding(
                                   padding: const EdgeInsets.only(left: 8, right: 8),
                                   child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                                     children: [
                                       Icon(Icons.person, color: Colors.white, size: 14,),
 
@@ -485,5 +453,89 @@ class AppBar extends StatelessWidget {
 
     );
   }
+
+  void showBVNDialog(context) async {
+
+    String bvn = await showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            backgroundColor:   Colors.white,
+            content: Container(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(detailsModel.restaurant_name,style: TextStyle(fontSize: 20), ),
+              SizedBox(height: 20,),
+                  PopUp(
+                    icons: Icons.location_on_outlined,
+                    text: "Address",
+                    subText: detailsModel.address,
+                  ),
+                  PopUp(
+                    icons: Icons.schedule_sharp,
+                    text: "Opening time",
+                    subText: detailsModel.opening_time,
+                  ),
+                  PopUp(
+                    icons: Icons.lock_clock,
+                    text: "Closing time",
+                    subText: detailsModel.closing_time,
+                  ),
+                  PopUp(
+                    icons: Icons.star_outline_sharp,
+                    text: "Average rating",
+                    subText: "${detailsModel.total_rating.toString()} stars",
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
+    print(bvn);
+    if (bvn != null && bvn !=  "" ) {
+
+      return;
+    }else{
+//      Navigator.pop(context);
+    }
+  }
 }
 
+
+class PopUp extends StatelessWidget {
+  final IconData icons;
+  final String text;
+  final String subText;
+  PopUp({this.text, this.icons, this.subText});
+  @override
+  Widget build(BuildContext context) {
+    return  Container(
+        margin: EdgeInsets.symmetric(vertical: 15),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+
+            children: [
+              Icon(icons, color: kborderColor, ),
+              SizedBox(width: 10,),
+              Column(
+
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(text ?? "", style: TextStyle(fontSize: 20,  fontWeight: FontWeight.w600), ),
+                  Container(
+                      width: 200,
+                      child: Text(subText ?? "", style: TextStyle(fontSize: 10, color: Colors.grey, fontWeight: FontWeight.w600),)),
+                ],
+              )
+            ],
+          )
+        ],
+
+      ),
+    )
+    ;
+  }
+}
