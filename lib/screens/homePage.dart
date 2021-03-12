@@ -50,9 +50,9 @@ bool isLoading = false;
 
 //                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-//                    Spacer(),
 
-                      Center(
+
+                      Expanded(
                         child: RaisedButton(
                           onPressed: (){
                             titleDialog(context);
@@ -76,9 +76,10 @@ bool isLoading = false;
                           ),
                         ),
                       ),
-//                      Spacer(),
+
 
                         IconButton(icon:  Icon(Icons.view_headline), onPressed: _openDrawer),
+//                      Spacer(),
                       SizedBox(width: 10,),
                     ],
                   ),
