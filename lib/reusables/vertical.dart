@@ -40,12 +40,14 @@ class Events extends StatelessWidget {
         child: Container(
 
           decoration: BoxDecoration(
-            color: kPrimaryColor,
+
 //            border: Border.all(color: Colors.white.withOpacity(0.1)),
-              borderRadius: BorderRadius.all(Radius.circular(10.0))
+
           ),
           width: 200,
-          child: Image.network(image , fit:BoxFit.cover),
+          child: ClipRRect(
+              borderRadius: BorderRadius.circular(8.0),
+              child: Image.network(image , fit:BoxFit.cover)),
         ),
       ),
     );

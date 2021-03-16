@@ -1,6 +1,7 @@
 import 'package:after_layout/after_layout.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:grigora/Utils/sizeConfig.dart';
 import 'package:grigora/constants/colorConstants.dart';
 import 'package:grigora/model/restuarants.dart';
 import 'package:grigora/provider/restaurantState.dart';
@@ -98,11 +99,13 @@ bool isLoading = false;
                             child: Container(
                               width: 200,
                               margin: EdgeInsets.only( top: 15.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-
-                                  Text.rich(
+                              child:  Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                              Text.rich(
                                     TextSpan(text: 'New ', style: TextStyle(fontWeight: FontWeight.w500, color: kborderColor, fontSize: 15),
                                         children: <TextSpan>[
                                           TextSpan(text: 'in Grigora ', style: TextStyle( fontWeight: FontWeight.w500, color: Colors.black, fontSize: 15 )),
@@ -114,15 +117,14 @@ bool isLoading = false;
 
 
                                   ),
-                                  SizedBox(height: 5,),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Expanded(
+                              Container(
+                                width: 70 * SizeConfig.widthMultiplier,
+                                  child: Text('Enjoy delicious meals from restaurants and vendors around you', style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold, fontSize: 10),)),
+                                    ],
+                                  ),
 
-                                          child: Text('Enjoy delicious meals from restaurants and vendors around you', style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold, fontSize: 10),)),
-
-                                      Container(
+//                                SizedBox(width: 10,),
+                                Container(
                                         child: Row(
                                           children: [
                                             InkWell(child: Text("View all", style: TextStyle(color: Colors.red, fontSize: 12),)),
@@ -130,11 +132,9 @@ bool isLoading = false;
                                           ],
                                         ),
                                       )
-                                    ],
-                                  ),
-//                                  Text(loginState.user.name , style: TextStyle(color: kPrimaryColor, fontWeight: FontWeight.bold, fontSize: 36),)
                                 ],
-                              ),
+                              )
+
                             ),
                           ),
                           SizedBox(height: 20.0,),
@@ -160,12 +160,14 @@ bool isLoading = false;
                             padding: const EdgeInsets.only(right: 20, left: 20),
                             child: Container(
                               width: 200,
-                              margin: EdgeInsets.only( top: 15.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-
-                                  Text.rich(
+                              margin: EdgeInsets.only( top: 25.0),
+                              child:  Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text.rich(
                                     TextSpan(text: 'Restaurants ', style: TextStyle(fontWeight: FontWeight.w500, fontSize: 15),
                                         children: <TextSpan>[
                                           TextSpan(text: 'Near ', style: TextStyle(color: kborderColor, fontWeight: FontWeight.w500, fontSize: 15 )),
@@ -177,30 +179,27 @@ bool isLoading = false;
 
 
                                   ),
-                                  SizedBox(height: 5,),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Expanded(
-
-                                          child: Text('Enjoy delicious meals from restaurants and vendors around you', style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold, fontSize: 10),)),
-
                                       Container(
-                                        child: Row(
-                                          children: [
-                                            InkWell(child: Text("View all", style: TextStyle(color: Colors.red, fontSize: 12),)),
-                                            Icon(Icons.arrow_forward_outlined, size: 10,color: Colors.red ,)
-                                          ],
-                                        ),
-                                      )
+                                          width: 70 * SizeConfig.widthMultiplier,
+                                          child: Text('Enjoy delicious meals from restaurants and vendors around you', style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold, fontSize: 10),)),
                                     ],
                                   ),
-//                                  Text(loginState.user.name , style: TextStyle(color: kPrimaryColor, fontWeight: FontWeight.bold, fontSize: 36),)
+
+//                                SizedBox(width: 10,),
+                                  Container(
+                                    child: Row(
+                                      children: [
+                                        InkWell(child: Text("View all", style: TextStyle(color: Colors.red, fontSize: 12),)),
+                                        Icon(Icons.arrow_forward_outlined, size: 10,color: Colors.red ,)
+                                      ],
+                                    ),
+                                  )
                                 ],
-                              ),
+                              )
+
                             ),
                           ),
-                          SizedBox(height: 20.0,),
+                          SizedBox(height: 10.0,),
                         ]
                     )
                 ),

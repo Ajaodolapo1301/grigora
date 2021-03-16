@@ -73,7 +73,7 @@ DetailsModel detailsModel;
                       [
 
                         CategoriesEvents(
-                          restaurant: detailsModel.featureModel,
+                          restaurant: detailsModel.featureModel != null ? detailsModel.featureModel : [],
                         ),
 
                       ]
@@ -131,7 +131,7 @@ DetailsModel detailsModel;
 
         ),
       ),
-    );;
+    );
   }
 
   @override
@@ -188,7 +188,7 @@ class AppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return  SliverAppBar(
       pinned: false,
-      floating: true,
+      floating: false,
       expandedHeight: 410,
       flexibleSpace: Stack(
 
